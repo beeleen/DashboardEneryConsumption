@@ -1,3 +1,4 @@
+source("./SCRIPTS/forecastmodels.R")
 server <- shinyServer(function(input, output){
 
   
@@ -140,7 +141,13 @@ server <- shinyServer(function(input, output){
     #print("hola")
   })
   
+  output$boxes <- renderText({ 
+    print(as.character(input$aggregation_function))
+    })
   
-  
+  output$arimaPlot <- renderPlot({
+    autoplot(AutoarimaPred)
+    
+  })
     
 })
